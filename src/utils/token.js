@@ -6,4 +6,10 @@ const generateAccessToken = (userId) => {
   });
 };
 
-module.exports = { generateAccessToken };
+const verifyAccessToken = (token) => {
+  return jwt.verify(token, process.env.JWT_ACCESS_SECRET, {
+    algorithms: ["HS256"],
+  });
+};
+
+module.exports = { generateAccessToken, verifyAccessToken };
